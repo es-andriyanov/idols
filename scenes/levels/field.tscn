@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://csvh0u3ps5wjl"]
 
-[ext_resource type="Script" path="res://field.gd" id="1_chc20"]
-[ext_resource type="Texture2D" uid="uid://ch67h4i2s06pn" path="res://art/plitka.png" id="1_wukdf"]
+[ext_resource type="Script" path="res://scenes/levels/field.gd" id="1_chc20"]
+[ext_resource type="Texture2D" uid="uid://ch67h4i2s06pn" path="res://art/field_blue.png" id="1_wukdf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k0nl1"]
 size = Vector2(12, 12)

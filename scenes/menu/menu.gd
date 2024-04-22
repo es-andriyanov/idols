@@ -5,6 +5,7 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$BGComputer.hide()
+	$BlackBG.hide()
 	$Music.play()
 	
 func _process(delta):
@@ -13,7 +14,6 @@ func _process(delta):
 func _on_intro_end_intro():
 	$BGComputer.is_intro_finished = true
 	$BGComputer.show()
-	$ColorRect.hide()
 
 func _on_bg_computer_music_vol_changed(new_vol):
 	if new_vol > 0:
@@ -26,3 +26,5 @@ func _on_bg_computer_music_vol_changed(new_vol):
 
 func _on_bg_computer_level_picked(level):
 	print(str(level) + "picked") # shut_down animation and level start
+	$BlackBG.show()
+	$AnimLevelPicked.play("level_picked")

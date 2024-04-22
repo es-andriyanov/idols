@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ch67h4i2s06pn"
-path="res://.godot/imported/plitka.png-cccf8d39ab6732eb698bc92b3bfffb23.ctex"
+path="res://.godot/imported/field_blue.png-db2e11735a19cfcd33515f052803b766.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/plitka.png"
-dest_files=["res://.godot/imported/plitka.png-cccf8d39ab6732eb698bc92b3bfffb23.ctex"]
+source_file="res://art/field_blue.png"
+dest_files=["res://.godot/imported/field_blue.png-db2e11735a19cfcd33515f052803b766.ctex"]
 
 [params]
 

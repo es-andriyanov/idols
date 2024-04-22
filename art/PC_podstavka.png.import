@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo0k0kufrr3rw"
-path="res://.godot/imported/PC_podstavka.png-036c3017f89b4a25eb0c7da2fe777e6e.ctex"
+uid="uid://chfapkccr01ee"
+path="res://.godot/imported/pc_podstavka.png-f427b8cc11069c2d3a9576605d93a5a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/PC_podstavka.png"
-dest_files=["res://.godot/imported/PC_podstavka.png-036c3017f89b4a25eb0c7da2fe777e6e.ctex"]
+source_file="res://art/pc_podstavka.png"
+dest_files=["res://.godot/imported/pc_podstavka.png-f427b8cc11069c2d3a9576605d93a5a6.ctex"]
 
 [params]
 

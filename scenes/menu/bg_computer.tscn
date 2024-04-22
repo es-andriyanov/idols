@@ -1,18 +1,18 @@
 [gd_scene load_steps=17 format=3 uid="uid://oqvmhj448jw1"]
 
 [ext_resource type="Script" path="res://scenes/menu/bg_computer.gd" id="1_cvqja"]
-[ext_resource type="Texture2D" uid="uid://o55i7g1jd7dg" path="res://art/table.png" id="2_57eoj"]
 [ext_resource type="FontFile" uid="uid://nd0j0ma6nfnv" path="res://fonts/Xolonium-Regular.ttf" id="2_f7nu3"]
-[ext_resource type="Texture2D" uid="uid://chfapkccr01ee" path="res://art/part of comp.png" id="3_c6s12"]
+[ext_resource type="Texture2D" uid="uid://o55i7g1jd7dg" path="res://art/pc_table.png" id="2_q0w0p"]
+[ext_resource type="Texture2D" uid="uid://chfapkccr01ee" path="res://art/pc_podstavka.png" id="3_md55y"]
 [ext_resource type="Texture2D" uid="uid://dlgglqtgii35t" path="res://art/winXP.jpg" id="4_odkfi"]
-[ext_resource type="Texture2D" uid="uid://cc24nu74invel" path="res://art/window welcome.png" id="6_c0h7b"]
-[ext_resource type="Texture2D" uid="uid://buwndfqon0l10" path="res://art/monitors frame.png" id="6_eb3ys"]
-[ext_resource type="Texture2D" uid="uid://3fp4w208c68i" path="res://art/button play.png" id="7_abgeb"]
+[ext_resource type="Texture2D" uid="uid://cvd1c2j508rdq" path="res://art/winXP_explorer.png" id="4_psq7f"]
 [ext_resource type="Texture2D" uid="uid://c0xdve3cqdkfh" path="res://art/start_icon.png" id="8_g0f2l"]
-[ext_resource type="Texture2D" uid="uid://cyknq6wnkw6l0" path="res://art/button close.png" id="8_j2cl8"]
 [ext_resource type="Texture2D" uid="uid://s3qm64nw5b1a" path="res://art/quit_icon.png" id="9_cyuq4"]
 [ext_resource type="Texture2D" uid="uid://b7bm78g4n208m" path="res://art/settings_icon.png" id="9_tmoj0"]
-[ext_resource type="Texture2D" uid="uid://cvd1c2j508rdq" path="res://art/winXP_settings.png" id="10_p3ksx"]
+[ext_resource type="Texture2D" uid="uid://cc24nu74invel" path="res://art/winXP_welcome.png" id="10_br37c"]
+[ext_resource type="Texture2D" uid="uid://3fp4w208c68i" path="res://art/btn_play.png" id="11_8redo"]
+[ext_resource type="Texture2D" uid="uid://cyknq6wnkw6l0" path="res://art/btn_close.png" id="12_ucu4a"]
+[ext_resource type="Texture2D" uid="uid://buwndfqon0l10" path="res://art/pc_frame.png" id="13_t7214"]
 
 [sub_resource type="Animation" id="Animation_tfnhf"]
 resource_name = "shut_down"
@@ -71,12 +71,12 @@ motion_scale = Vector2(0.7, 0.7)
 [node name="PCTable" type="Sprite2D" parent="ParallaxLayer3"]
 position = Vector2(557, 683)
 scale = Vector2(0.42, 0.42)
-texture = ExtResource("2_57eoj")
+texture = ExtResource("2_q0w0p")
 
 [node name="PCPodstavka" type="Sprite2D" parent="ParallaxLayer3"]
 position = Vector2(584, 561)
 scale = Vector2(0.241319, 0.241319)
-texture = ExtResource("3_c6s12")
+texture = ExtResource("3_md55y")
 
 [node name="ParallaxLayer2_Start" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.85, 0.85)
@@ -84,7 +84,7 @@ motion_scale = Vector2(0.85, 0.85)
 [node name="PCScreen" type="Sprite2D" parent="ParallaxLayer2_Start"]
 position = Vector2(627.919, 241.5)
 scale = Vector2(0.342624, 0.360185)
-texture = ExtResource("10_p3ksx")
+texture = ExtResource("4_psq7f")
 
 [node name="Back" type="Button" parent="ParallaxLayer2_Start"]
 offset_left = 576.0
@@ -106,6 +106,7 @@ offset_bottom = 324.0
 scale = Vector2(0.6, 0.6)
 
 [node name="Level1" type="TextureButton" parent="ParallaxLayer2_Start/Icon1"]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 3.0
 offset_right = 660.0
@@ -135,6 +136,7 @@ offset_bottom = 324.75
 scale = Vector2(0.6, 0.6)
 
 [node name="Level2" type="TextureButton" parent="ParallaxLayer2_Start/Icon2"]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 3.0
 offset_right = 660.0
@@ -165,6 +167,7 @@ offset_bottom = 326.062
 scale = Vector2(0.6, 0.6)
 
 [node name="Level3" type="TextureButton" parent="ParallaxLayer2_Start/Icon3"]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 3.0
 offset_right = 660.0
@@ -195,6 +198,7 @@ offset_bottom = 325.5
 scale = Vector2(0.6, 0.6)
 
 [node name="Level4" type="TextureButton" parent="ParallaxLayer2_Start/Icon4"]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 3.0
 offset_right = 660.0
@@ -216,13 +220,12 @@ text = "Ур. 3
 horizontal_alignment = 1
 
 [node name="ParallaxLayer2_Settings" type="ParallaxLayer" parent="."]
-visible = false
 motion_scale = Vector2(0.85, 0.85)
 
 [node name="PCScreen" type="Sprite2D" parent="ParallaxLayer2_Settings"]
 position = Vector2(627.919, 241.5)
 scale = Vector2(0.342624, 0.360185)
-texture = ExtResource("10_p3ksx")
+texture = ExtResource("4_psq7f")
 
 [node name="Back" type="Button" parent="ParallaxLayer2_Settings"]
 offset_left = 576.0
@@ -255,7 +258,6 @@ value = 30.0
 rounded = true
 
 [node name="ParallaxLayer2_Main" type="ParallaxLayer" parent="."]
-visible = false
 motion_scale = Vector2(0.85, 0.85)
 
 [node name="PCScreen" type="Sprite2D" parent="ParallaxLayer2_Main"]
@@ -272,6 +274,7 @@ offset_right = 523.0
 offset_bottom = 217.0
 
 [node name="Settings" type="TextureButton" parent="ParallaxLayer2_Main/IconSettings"]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 3.0
 offset_right = 660.0
@@ -300,6 +303,7 @@ offset_right = 729.0
 offset_bottom = 216.0
 
 [node name="Start" type="TextureButton" parent="ParallaxLayer2_Main/IconStart"]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 3.0
 offset_right = 660.0
@@ -329,6 +333,7 @@ offset_right = 923.0
 offset_bottom = 216.0
 
 [node name="Quit" type="TextureButton" parent="ParallaxLayer2_Main/IconQuit"]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 3.0
 offset_right = 660.0
@@ -360,7 +365,7 @@ offset_bottom = 430.0
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2_Main/WelcomeWindow"]
 position = Vector2(328, 204)
 scale = Vector2(0.228625, 0.228625)
-texture = ExtResource("6_c0h7b")
+texture = ExtResource("10_br37c")
 
 [node name="Ok" type="TextureButton" parent="ParallaxLayer2_Main/WelcomeWindow"]
 layout_mode = 0
@@ -369,7 +374,7 @@ offset_top = 238.0
 offset_right = 388.0
 offset_bottom = 280.0
 scale = Vector2(1.2, 1.2)
-texture_normal = ExtResource("7_abgeb")
+texture_normal = ExtResource("11_8redo")
 
 [node name="TextureButton" type="TextureButton" parent="ParallaxLayer2_Main/WelcomeWindow"]
 layout_mode = 0
@@ -378,7 +383,7 @@ offset_top = 55.0
 offset_right = 579.0
 offset_bottom = 125.0
 scale = Vector2(0.45, 0.45)
-texture_normal = ExtResource("8_j2cl8")
+texture_normal = ExtResource("12_ucu4a")
 ignore_texture_size = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxLayer2_Main"]
@@ -399,7 +404,7 @@ position = Vector2(60, -38)
 [node name="PCFrame" type="Sprite2D" parent="ParallaxLayer1"]
 position = Vector2(550, 366)
 scale = Vector2(0.294745, 0.294745)
-texture = ExtResource("6_eb3ys")
+texture = ExtResource("13_t7214")
 
 [node name="TimerWelcome" type="Timer" parent="."]
 wait_time = 12.0

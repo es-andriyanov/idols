@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cir3o5n4nvei7"
-path="res://.godot/imported/Drawing-1.sketchpad.png-2bdb53812fcb347d5a493658d3cd23df.ctex"
+uid="uid://3fp4w208c68i"
+path="res://.godot/imported/btn_play.png-1f6d5d09128163c74ed2b35d6294348b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Drawing-1.sketchpad.png"
-dest_files=["res://.godot/imported/Drawing-1.sketchpad.png-2bdb53812fcb347d5a493658d3cd23df.ctex"]
+source_file="res://art/btn_play.png"
+dest_files=["res://.godot/imported/btn_play.png-1f6d5d09128163c74ed2b35d6294348b.ctex"]
 
 [params]
 
