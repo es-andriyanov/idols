@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://brkcp8vltm6mr"]
-
-[node name="LevelTutorial" type="Node"]
-
-[node name="LevelIntro" type="Node2D" parent="."]

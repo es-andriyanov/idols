@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://brkcp8vltm6mr"]
+
+[ext_resource type="PackedScene" uid="uid://we4a6521rb4y" path="res://scenes/levels/main_character.tscn" id="1_4eepn"]
+[ext_resource type="Script" path="res://scenes/levels/level_tutorial.gd" id="1_xamby"]
+[ext_resource type="PackedScene" uid="uid://csvh0u3ps5wjl" path="res://field.tscn" id="2_1qyiq"]
+
+[node name="LevelTutorial" type="Node"]
+script = ExtResource("1_xamby")
+
+[node name="LevelIntro" type="Node2D" parent="."]
+
+[node name="bg" type="ColorRect" parent="."]
+offset_left = -129.0
+offset_top = -82.0
+offset_right = 1379.0
+offset_bottom = 766.0
+color = Color(0.414066, 0.414066, 0.414066, 1)
+
+[node name="Field" parent="." instance=ExtResource("2_1qyiq")]
+position = Vector2(640, 360)
+
+[node name="MainCharacter" parent="." instance=ExtResource("1_4eepn")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 360)

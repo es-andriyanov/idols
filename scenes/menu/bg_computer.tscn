@@ -1,0 +1,117 @@
+[gd_scene load_steps=7 format=3 uid="uid://oqvmhj448jw1"]
+
+[ext_resource type="Texture2D" uid="uid://cir3o5n4nvei7" path="res://art/Drawing-1.sketchpad.png" id="1_3h6cv"]
+[ext_resource type="Texture2D" uid="uid://cy6ah2w5616ah" path="res://art/2.png" id="1_7m8cm"]
+[ext_resource type="Script" path="res://scenes/menu/bg_computer.gd" id="1_cvqja"]
+[ext_resource type="Texture2D" uid="uid://dsg4n7fat38km" path="res://art/PC_table.png" id="2_di21f"]
+[ext_resource type="FontFile" uid="uid://nd0j0ma6nfnv" path="res://fonts/Xolonium-Regular.ttf" id="2_f7nu3"]
+[ext_resource type="Texture2D" uid="uid://bo0k0kufrr3rw" path="res://art/PC_podstavka.png" id="2_l7a6e"]
+
+[node name="BGComputer" type="ParallaxBackground"]
+script = ExtResource("1_cvqja")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.55, 0.55)
+
+[node name="BGColor" type="ColorRect" parent="ParallaxLayer4"]
+offset_left = -51.0
+offset_top = -66.0
+offset_right = 1384.0
+offset_bottom = 797.0
+color = Color(0.133333, 0.196078, 0.694118, 1)
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.7, 0.7)
+
+[node name="PCTable" type="Sprite2D" parent="ParallaxLayer3"]
+position = Vector2(650, 346.5)
+scale = Vector2(0.605903, 0.633488)
+texture = ExtResource("2_di21f")
+
+[node name="PCPodstavka" type="Sprite2D" parent="ParallaxLayer3"]
+position = Vector2(706.167, 470.16)
+scale = Vector2(0.283461, 0.386049)
+texture = ExtResource("2_l7a6e")
+
+[node name="ParallaxLayer2_Main" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.85, 0.85)
+
+[node name="PCScreen" type="Sprite2D" parent="ParallaxLayer2_Main"]
+position = Vector2(647, 272)
+scale = Vector2(0.0558854, 0.0761111)
+texture = ExtResource("1_7m8cm")
+
+[node name="StartGame" type="Button" parent="ParallaxLayer2_Main"]
+offset_left = 518.0
+offset_top = 138.0
+offset_right = 793.0
+offset_bottom = 212.0
+theme_override_fonts/font = ExtResource("2_f7nu3")
+theme_override_font_sizes/font_size = 36
+text = "Start Game"
+
+[node name="Settings" type="Button" parent="ParallaxLayer2_Main"]
+offset_left = 520.0
+offset_top = 229.0
+offset_right = 795.0
+offset_bottom = 303.0
+theme_override_fonts/font = ExtResource("2_f7nu3")
+theme_override_font_sizes/font_size = 36
+text = "Settings"
+
+[node name="Quit" type="Button" parent="ParallaxLayer2_Main"]
+offset_left = 517.0
+offset_top = 326.0
+offset_right = 792.0
+offset_bottom = 400.0
+theme_override_fonts/font = ExtResource("2_f7nu3")
+theme_override_font_sizes/font_size = 36
+text = "Quit"
+
+[node name="ParallaxLayer2_Settings" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.85, 0.85)
+
+[node name="PCScreen" type="Sprite2D" parent="ParallaxLayer2_Settings"]
+position = Vector2(642, 274)
+scale = Vector2(0.0558854, 0.0761111)
+texture = ExtResource("1_7m8cm")
+
+[node name="Back" type="Button" parent="ParallaxLayer2_Settings"]
+offset_left = 502.0
+offset_top = 345.0
+offset_right = 777.0
+offset_bottom = 419.0
+theme_override_fonts/font = ExtResource("2_f7nu3")
+theme_override_font_sizes/font_size = 36
+text = "Back"
+
+[node name="Label" type="Label" parent="ParallaxLayer2_Settings"]
+offset_left = 430.0
+offset_top = 128.0
+offset_right = 630.0
+offset_bottom = 206.0
+theme_override_fonts/font = ExtResource("2_f7nu3")
+theme_override_font_sizes/font_size = 64
+text = "Music"
+
+[node name="MusicVol" type="HSlider" parent="ParallaxLayer2_Settings"]
+offset_left = 668.0
+offset_top = 115.0
+offset_right = 754.0
+offset_bottom = 164.0
+scale = Vector2(2, 2)
+max_value = 30.0
+value = 30.0
+rounded = true
+
+[node name="ParallaxLayer1" type="ParallaxLayer" parent="."]
+position = Vector2(60, -38)
+
+[node name="PCFrame" type="Sprite2D" parent="ParallaxLayer1"]
+position = Vector2(636, 328)
+scale = Vector2(0.116481, 0.116481)
+texture = ExtResource("1_3h6cv")
+
+[connection signal="pressed" from="ParallaxLayer2_Main/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="ParallaxLayer2_Settings/Back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="ParallaxLayer2_Settings/MusicVol" to="." method="_on_music_vol_value_changed"]
