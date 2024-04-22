@@ -1,7 +1,28 @@
-[gd_scene format=3 uid="uid://clu37ya3mxksn"]
+[gd_scene load_steps=4 format=3 uid="uid://clu37ya3mxksn"]
+
+[ext_resource type="Texture2D" uid="uid://c4djsesp1ovcn" path="res://art/idols/idol_1.png" id="1_0jntn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_etvql"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0jntn")
+}],
+"loop": false,
+"name": &"stand",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xuqtg"]
+size = Vector2(420, 420)
 
 [node name="idol" type="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_etvql")
+animation = &"stand"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.2, 0.2)
+shape = SubResource("RectangleShape2D_xuqtg")

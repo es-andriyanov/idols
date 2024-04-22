@@ -1,10 +1,9 @@
 extends CharacterBody2D
 
 @export var speed = 300
-var screen_size # Size of the game window.
 
 func _ready():
-	screen_size = get_viewport_rect().size 
+	position = position.clamp(Vector2(334, 66), Vector2(912, 600))
 
 func _process(delta):
 	var velocity = Vector2.ZERO # The player's movement vector.
@@ -24,7 +23,7 @@ func _process(delta):
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 		position += velocity * delta
-		position = position.clamp(Vector2.ZERO, screen_size)
+		position = position.clamp(Vector2(334, 66), Vector2(950, 651))
 
 func pick_animation(vel):
 	if vel.length() == 0:

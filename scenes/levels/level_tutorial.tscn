@@ -20,6 +20,7 @@ color = Color(0.414066, 0.414066, 0.414066, 1)
 position = Vector2(640, 360)
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_4eepn")]
+position = Vector2(3.05176e-05, 7.62939e-06)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(640, 360)

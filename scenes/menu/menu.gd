@@ -22,3 +22,7 @@ func _on_bg_computer_music_vol_changed(new_vol):
 		$Music.set_volume_db(new_vol - 30)
 	else:
 		$Music.set_stream_paused(true)
+
+
+func _on_bg_computer_level_picked(level):
+	print(str(level) + "picked") # shut_down animation and level start

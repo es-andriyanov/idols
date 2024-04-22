@@ -9,6 +9,7 @@
 script = ExtResource("1_i4n4v")
 
 [node name="BGComputer" parent="." instance=ExtResource("4_6uhj6")]
+is_intro_finished = false
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -29.0
@@ -30,5 +31,6 @@ limit_right = 1330
 limit_bottom = 770
 editor_draw_limits = true
 
+[connection signal="level_picked" from="BGComputer" to="." method="_on_bg_computer_level_picked"]
 [connection signal="music_vol_changed" from="BGComputer" to="." method="_on_bg_computer_music_vol_changed"]
 [connection signal="end_intro" from="Intro" to="." method="_on_intro_end_intro"]

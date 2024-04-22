@@ -61,6 +61,7 @@ animations = [{
 size = Vector2(64, 96)
 
 [node name="MainCharacter" type="CharacterBody2D"]
+scale = Vector2(0.8, 0.8)
 script = ExtResource("1_tatw4")
 metadata/_edit_group_ = true
 
@@ -69,5 +70,4 @@ sprite_frames = SubResource("SpriteFrames_5ebtg")
 animation = &"walk_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.9, 0.9)
 shape = SubResource("RectangleShape2D_icjgp")
