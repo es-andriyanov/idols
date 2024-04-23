@@ -1,26 +1,312 @@
-[gd_scene load_steps=4 format=3 uid="uid://brkcp8vltm6mr"]
+[gd_scene load_steps=16 format=3 uid="uid://brkcp8vltm6mr"]
 
 [ext_resource type="PackedScene" uid="uid://we4a6521rb4y" path="res://scenes/levels/main_character.tscn" id="1_4eepn"]
 [ext_resource type="Script" path="res://scenes/levels/level_tutorial.gd" id="1_xamby"]
 [ext_resource type="PackedScene" uid="uid://csvh0u3ps5wjl" path="res://scenes/levels/field.tscn" id="2_1qyiq"]
+[ext_resource type="PackedScene" uid="uid://clu37ya3mxksn" path="res://art/mainCharacter/idol.tscn" id="2_brxnb"]
+[ext_resource type="Texture2D" uid="uid://v8pp6q0mid2k" path="res://art/bg_level_1.png" id="2_ic5ln"]
+[ext_resource type="Texture2D" uid="uid://cr6kvox6ap3qh" path="res://art/field_frame_lvl1.png" id="4_w4nah"]
+[ext_resource type="PackedScene" uid="uid://d124nyu4li83c" path="res://control.tscn" id="7_v6vbv"]
+[ext_resource type="PackedScene" uid="uid://bftn65aio42j3" path="res://control_2.tscn" id="8_csaoh"]
 
-[node name="LevelTutorial" type="Node"]
+[sub_resource type="Animation" id="Animation_s1fh0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_obbuj"]
+resource_name = "show_up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_odvfr"]
+_data = {
+"RESET": SubResource("Animation_s1fh0"),
+"show_up": SubResource("Animation_obbuj")
+}
+
+[sub_resource type="Animation" id="Animation_3gxa4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackBg:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0ftcm"]
+resource_name = "shut_down"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackBg:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lwm64"]
+resource_name = "shut_up"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackBg:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pktoy"]
+_data = {
+"RESET": SubResource("Animation_3gxa4"),
+"shut_down": SubResource("Animation_0ftcm"),
+"shut_up": SubResource("Animation_lwm64")
+}
+
+[node name="Node" type="Node"]
 script = ExtResource("1_xamby")
+idol_scene = ExtResource("2_brxnb")
 
-[node name="LevelIntro" type="Node2D" parent="."]
-
-[node name="bg" type="ColorRect" parent="."]
-offset_left = -129.0
-offset_top = -82.0
-offset_right = 1379.0
-offset_bottom = 766.0
-color = Color(0.414066, 0.414066, 0.414066, 1)
+[node name="bg_lvl1" type="Sprite2D" parent="."]
+position = Vector2(639, 361)
+scale = Vector2(0.174023, 0.174023)
+texture = ExtResource("2_ic5ln")
 
 [node name="Field" parent="." instance=ExtResource("2_1qyiq")]
 position = Vector2(640, 360)
+
+[node name="Frame" type="Sprite2D" parent="."]
+position = Vector2(638, 356)
+scale = Vector2(0.19421, 0.19421)
+texture = ExtResource("4_w4nah")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Frame"]
+libraries = {
+"": SubResource("AnimationLibrary_odvfr")
+}
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_4eepn")]
 position = Vector2(3.05176e-05, 7.62939e-06)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(640, 360)
+
+[node name="LevelIntro" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LevelIntro"]
+libraries = {
+"": SubResource("AnimationLibrary_pktoy")
+}
+
+[node name="BlackBg" type="ColorRect" parent="LevelIntro"]
+visible = false
+offset_left = -28.0
+offset_top = -24.0
+offset_right = 1306.0
+offset_bottom = 744.0
+color = Color(0, 0, 0, 0)
+
+[node name="SpawnPositions" type="Node" parent="."]
+
+[node name="1_1" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(351, 72)
+
+[node name="1_2" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(449, 72)
+
+[node name="1_3" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(544, 72)
+
+[node name="1_4" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(640, 72)
+
+[node name="1_5" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(736, 72)
+
+[node name="1_6" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(832, 72)
+
+[node name="1_7" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(928, 72)
+
+[node name="1_8" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(351, 168)
+
+[node name="1_9" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(449, 168)
+
+[node name="1_10" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(544, 168)
+
+[node name="1_11" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(640, 168)
+
+[node name="1_12" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(736, 168)
+
+[node name="1_13" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(832, 168)
+
+[node name="1_14" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(928, 168)
+
+[node name="1_15" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(351, 264)
+
+[node name="1_16" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(449, 264)
+
+[node name="1_17" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(544, 264)
+
+[node name="1_18" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(640, 264)
+
+[node name="1_19" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(736, 264)
+
+[node name="1_20" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(832, 264)
+
+[node name="1_21" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(928, 264)
+
+[node name="1_22" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(351, 360)
+
+[node name="1_23" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(449, 360)
+
+[node name="1_24" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(544, 360)
+
+[node name="1_25" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(640, 360)
+
+[node name="1_26" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(736, 360)
+
+[node name="1_27" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(832, 360)
+
+[node name="1_28" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(928, 360)
+
+[node name="1_29" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(351, 456)
+
+[node name="1_30" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(449, 456)
+
+[node name="1_31" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(544, 456)
+
+[node name="1_32" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(640, 456)
+
+[node name="1_33" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(736, 456)
+
+[node name="1_34" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(832, 456)
+
+[node name="1_35" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(928, 456)
+
+[node name="1_36" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(351, 552)
+
+[node name="1_37" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(449, 552)
+
+[node name="1_38" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(544, 552)
+
+[node name="1_39" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(640, 552)
+
+[node name="1_40" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(736, 552)
+
+[node name="1_41" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(832, 552)
+
+[node name="1_42" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(928, 552)
+
+[node name="1_43" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(351, 648)
+
+[node name="1_44" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(449, 648)
+
+[node name="1_45" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(544, 648)
+
+[node name="1_46" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(640, 648)
+
+[node name="1_47" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(736, 648)
+
+[node name="1_48" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(832, 648)
+
+[node name="1_49" type="Marker2D" parent="SpawnPositions" groups=["spawn"]]
+position = Vector2(928, 648)
+
+[node name="IdolCreateTimer" type="Timer" parent="."]
+
+[node name="IdolShootTimer" type="Timer" parent="."]
+
+[node name="dialoguebox" parent="." instance=ExtResource("7_v6vbv")]
+
+[node name="dialoguebox2" parent="." instance=ExtResource("8_csaoh")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+
+[connection signal="dialog_done" from="." to="." method="_on_dialog_done"]
+[connection signal="new_idol_pos" from="Field" to="." method="_on_field_new_idol_pos"]
+[connection signal="timeout" from="IdolCreateTimer" to="." method="_on_idol_create_timer_timeout"]
+[connection signal="timeout" from="IdolShootTimer" to="." method="_on_idol_shoot_timer_timeout"]
+[connection signal="fight" from="dialoguebox" to="." method="_on_dialoguebox_fight"]
+[connection signal="end_fight" from="dialoguebox2" to="." method="_on_dialoguebox_2_end_fight"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

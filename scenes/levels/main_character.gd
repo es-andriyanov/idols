@@ -30,8 +30,8 @@ func pick_animation(vel):
 		$AnimatedSprite2D.animation = "stand"
 	elif vel.x != 0:
 		$AnimatedSprite2D.animation = "walk_left"
-		$AnimatedSprite2D.flip_h = vel.x > 0
+		$AnimatedSprite2D.flip_h = vel.x < 0
 	elif vel.y > 0:
-		$AnimatedSprite2D.animation = "walk_down"
+		$AnimatedSprite2D.animation = "walk_left"
 	elif vel.y < 0:
-		$AnimatedSprite2D.animation = "walk_up"
+		$AnimatedSprite2D.animation = "walk_left"

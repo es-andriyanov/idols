@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://clu37ya3mxksn"]
+
+[ext_resource type="Script" path="res://scenes/levels/idol.gd" id="1_w42nm"]
+[ext_resource type="Texture2D" uid="uid://dcj6e8cofo4h0" path="res://art/idols/usual block.png" id="2_2iysw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_etvql"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2iysw")
+}],
+"loop": false,
+"name": &"stand",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xuqtg"]
+size = Vector2(420, 420)
+
+[node name="idol" type="CharacterBody2D"]
+script = ExtResource("1_w42nm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["idols"]]
+self_modulate = Color(1, 0, 1, 1)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_etvql")
+animation = &"stand"
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+scale = Vector2(0.2, 0.2)
+shape = SubResource("RectangleShape2D_xuqtg")
+
+[connection signal="reached_last_row" from="." to="." method="_on_reached_last_row"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

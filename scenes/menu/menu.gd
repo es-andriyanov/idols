@@ -1,9 +1,15 @@
 extends Node
 
 @export var speed = 300
+#var scene_1 = preload("res://scenes/levels/level_tutorial.tscn")
+#var scene_2 = preload("res://scenes/levels/level_two.tscn")
+var scene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	ResourceLoader.load_threaded_request("res://scenes/levels/level_tutorial.tscn")
+	ResourceLoader.load_threaded_request("res://scenes/levels/level_two.tscn")
+	
 	$BGComputer.hide()
 	$BlackBG.hide()
 	$Music.play()
@@ -28,3 +34,16 @@ func _on_bg_computer_level_picked(level):
 	print(str(level) + "picked") # shut_down animation and level start
 	$BlackBG.show()
 	$AnimLevelPicked.play("level_picked")
+	
+	
+	match level:
+		1: 	
+			scene = ResourceLoader.load_threaded_get("res://scenes/levels/level_tutorial.tscn")
+			#get_tree().change_scene_to_packed(scene)
+		2: 	
+			scene = ResourceLoader.load_threaded_get("res://scenes/levels/level_two.tscn")
+			#get_tree().change_scene_to_packed(scene)
+	
+	await get_tree().create_timer(2.0).timeout
+	get_tree().change_scene_to_packed(scene)
+	

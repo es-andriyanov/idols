@@ -1,13 +1,50 @@
-[gd_scene load_steps=5 format=3 uid="uid://csvh0u3ps5wjl"]
+[gd_scene load_steps=8 format=3 uid="uid://csvh0u3ps5wjl"]
 
 [ext_resource type="Script" path="res://scenes/levels/field.gd" id="1_chc20"]
-[ext_resource type="Texture2D" uid="uid://ch67h4i2s06pn" path="res://art/field_blue.png" id="1_wukdf"]
+[ext_resource type="Texture2D" uid="uid://1xt2eaqqqa22" path="res://art/field_lvl1.png" id="2_wxdsl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k0nl1"]
-size = Vector2(12, 12)
+size = Vector2(33, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3t4r"]
-size = Vector2(12, 12)
+size = Vector2(29, 30)
+
+[sub_resource type="Animation" id="Animation_2skph"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5p0x0"]
+resource_name = "show_up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_566r4"]
+_data = {
+"RESET": SubResource("Animation_2skph"),
+"show_up": SubResource("Animation_5p0x0")
+}
 
 [node name="Field" type="Node2D"]
 script = ExtResource("1_chc20")
@@ -15,9 +52,17 @@ script = ExtResource("1_chc20")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(6.10352e-05, 3.05176e-05)
 scale = Vector2(0.166, 0.166)
-texture = ExtResource("1_wukdf")
+texture = ExtResource("2_wxdsl")
 
 [node name="Area2D" type="Area2D" parent="."]
+
+[node name="1_1" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-288.5, -288.5)
+shape = SubResource("RectangleShape2D_k0nl1")
+
+[node name="1_2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-191.5, -288)
+shape = SubResource("RectangleShape2D_x3t4r")
 
 [node name="1_3" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-96, -288)
@@ -206,12 +251,10 @@ shape = SubResource("RectangleShape2D_x3t4r")
 position = Vector2(288, 288)
 shape = SubResource("RectangleShape2D_k0nl1")
 
-[node name="1_1" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-288, -288)
-shape = SubResource("RectangleShape2D_k0nl1")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_566r4")
+}
 
-[node name="1_2" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-192, -288)
-shape = SubResource("RectangleShape2D_x3t4r")
-
+[connection signal="new_idol_pos" from="." to="." method="_on_new_idol_pos"]
 [connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]

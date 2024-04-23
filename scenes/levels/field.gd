@@ -1,11 +1,61 @@
 extends Node2D
 
-#func _ready():
-	#pass # Replace with function body.
+signal new_idol_pos(curr)
 
-
-#func _process(delta):
-	#pass
+var curr = Vector2(1, 1)
 
 func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	print("ENTERED:" + str(get_child(1).get_child(local_shape_index).name))
+	#print("ENTERED:" + str(get_child(1).get_child(local_shape_index).name))
+	#match local_shape_index:
+		#0: curr = Vector2(1, 1)
+		#1: curr = Vector2(1, 2)
+		#2: curr = Vector2(1, 3)
+		#3: curr = Vector2(1, 4)
+		#4: curr = Vector2(1, 5)
+		#5: curr = Vector2(1, 6)
+		#6: curr = Vector2(1, 7)
+		#7: curr = Vector2(2, 1)
+		#8: curr = Vector2(2, 2)
+		#9: curr = Vector2(2, 3)
+		#10: curr = Vector2(2, 4)
+		#11: curr = Vector2(2, 5)
+		#12: curr = Vector2(2, 6)
+		#13: curr = Vector2(2, 7)
+		#14: curr = Vector2(3, 1)
+		#15: curr = Vector2(3, 2)
+		#16: curr = Vector2(3, 3)
+		#17: curr = Vector2(3, 4)
+		#18: curr = Vector2(3, 5)
+		#19: curr = Vector2(3, 6)
+		#20: curr = Vector2(3, 7)
+		#21: curr = Vector2(4, 1)
+		#22: curr = Vector2(4, 2)
+		#23: curr = Vector2(4, 3)
+		#24: curr = Vector2(4, 4)
+		#25: curr = Vector2(4, 5)
+		#26: curr = Vector2(4, 6)
+		#27: curr = Vector2(4, 7)
+		#28: curr = Vector2(5, 1)
+		#29: curr = Vector2(5, 2)
+		#30: curr = Vector2(5, 3)
+		#31: curr = Vector2(5, 4)
+		#32: curr = Vector2(5, 5)
+		#33: curr = Vector2(5, 6)
+		#34: curr = Vector2(5, 7)
+		#35: curr = Vector2(6, 1)
+		#36: curr = Vector2(6, 2)
+		#37: curr = Vector2(6, 3)
+		#38: curr = Vector2(6, 4)
+		#39: curr = Vector2(6, 5)
+		#40: curr = Vector2(6, 6)
+		#41: curr = Vector2(6, 7)
+		#42: curr = Vector2(7, 1)
+		#43: curr = Vector2(7, 2)
+		#44: curr = Vector2(7, 3)
+		#45: curr = Vector2(7, 4)
+		#46: curr = Vector2(7, 5)
+		#47: curr = Vector2(7, 6)
+		#48: curr = Vector2(7, 7)
+		
+	#new_idol_pos.emit(curr)
+	new_idol_pos.emit(local_shape_index)

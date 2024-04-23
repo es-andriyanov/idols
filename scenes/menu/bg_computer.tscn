@@ -1,18 +1,36 @@
-[gd_scene load_steps=17 format=3 uid="uid://oqvmhj448jw1"]
+[gd_scene load_steps=20 format=3 uid="uid://oqvmhj448jw1"]
 
 [ext_resource type="Script" path="res://scenes/menu/bg_computer.gd" id="1_cvqja"]
+[ext_resource type="Texture2D" uid="uid://i7i7mbx8h00e" path="res://art/bg_wall.png" id="2_eiok0"]
 [ext_resource type="FontFile" uid="uid://nd0j0ma6nfnv" path="res://fonts/Xolonium-Regular.ttf" id="2_f7nu3"]
 [ext_resource type="Texture2D" uid="uid://o55i7g1jd7dg" path="res://art/pc_table.png" id="2_q0w0p"]
 [ext_resource type="Texture2D" uid="uid://chfapkccr01ee" path="res://art/pc_podstavka.png" id="3_md55y"]
 [ext_resource type="Texture2D" uid="uid://dlgglqtgii35t" path="res://art/winXP.jpg" id="4_odkfi"]
 [ext_resource type="Texture2D" uid="uid://cvd1c2j508rdq" path="res://art/winXP_explorer.png" id="4_psq7f"]
+[ext_resource type="Texture2D" uid="uid://dliim7hx0fsg3" path="res://art/grabber.png" id="7_ftu5o"]
 [ext_resource type="Texture2D" uid="uid://c0xdve3cqdkfh" path="res://art/start_icon.png" id="8_g0f2l"]
+[ext_resource type="Texture2D" uid="uid://b66h5nn0et0ol" path="res://art/btn_back.png" id="8_qhyyc"]
 [ext_resource type="Texture2D" uid="uid://s3qm64nw5b1a" path="res://art/quit_icon.png" id="9_cyuq4"]
 [ext_resource type="Texture2D" uid="uid://b7bm78g4n208m" path="res://art/settings_icon.png" id="9_tmoj0"]
 [ext_resource type="Texture2D" uid="uid://cc24nu74invel" path="res://art/winXP_welcome.png" id="10_br37c"]
 [ext_resource type="Texture2D" uid="uid://3fp4w208c68i" path="res://art/btn_play.png" id="11_8redo"]
 [ext_resource type="Texture2D" uid="uid://cyknq6wnkw6l0" path="res://art/btn_close.png" id="12_ucu4a"]
 [ext_resource type="Texture2D" uid="uid://buwndfqon0l10" path="res://art/pc_frame.png" id="13_t7214"]
+
+[sub_resource type="Animation" id="Animation_py783"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShutDownBg:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_tfnhf"]
 resource_name = "shut_down"
@@ -28,21 +46,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_py783"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ShutDownBg:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_npeki"]
@@ -65,6 +68,11 @@ offset_right = 1455.0
 offset_bottom = 838.0
 color = Color(0.346095, 0.252203, 0.303869, 1)
 
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer4"]
+position = Vector2(643, 340)
+scale = Vector2(0.393033, 0.393033)
+texture = ExtResource("2_eiok0")
+
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.7, 0.7)
 
@@ -86,15 +94,14 @@ position = Vector2(627.919, 241.5)
 scale = Vector2(0.342624, 0.360185)
 texture = ExtResource("4_psq7f")
 
-[node name="Back" type="Button" parent="ParallaxLayer2_Start"]
-offset_left = 576.0
-offset_top = 302.0
-offset_right = 773.0
-offset_bottom = 355.0
-theme_override_fonts/font = ExtResource("2_f7nu3")
-theme_override_font_sizes/font_size = 36
-text = "Назад
-"
+[node name="Back" type="TextureButton" parent="ParallaxLayer2_Start"]
+offset_left = 572.0
+offset_top = 290.0
+offset_right = 1214.0
+offset_bottom = 499.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("8_qhyyc")
+ignore_texture_size = true
 
 [node name="Icon1" type="Control" parent="ParallaxLayer2_Start"]
 layout_mode = 3
@@ -227,15 +234,14 @@ position = Vector2(627.919, 241.5)
 scale = Vector2(0.342624, 0.360185)
 texture = ExtResource("4_psq7f")
 
-[node name="Back" type="Button" parent="ParallaxLayer2_Settings"]
-offset_left = 576.0
-offset_top = 302.0
-offset_right = 773.0
-offset_bottom = 355.0
-theme_override_fonts/font = ExtResource("2_f7nu3")
-theme_override_font_sizes/font_size = 36
-text = "Назад
-"
+[node name="Back" type="TextureButton" parent="ParallaxLayer2_Settings"]
+offset_left = 572.0
+offset_top = 290.0
+offset_right = 1214.0
+offset_bottom = 499.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("8_qhyyc")
+ignore_texture_size = true
 
 [node name="Label" type="Label" parent="ParallaxLayer2_Settings"]
 offset_left = 514.0
@@ -249,10 +255,13 @@ text = "Музыка
 "
 
 [node name="MusicVol" type="HSlider" parent="ParallaxLayer2_Settings"]
-offset_left = 665.0
-offset_top = 176.0
-offset_right = 841.0
-offset_bottom = 234.0
+offset_left = 671.0
+offset_top = 188.0
+offset_right = 905.0
+offset_bottom = 231.0
+theme_override_icons/grabber = ExtResource("7_ftu5o")
+theme_override_icons/grabber_highlight = ExtResource("7_ftu5o")
+theme_override_icons/grabber_disabled = ExtResource("7_ftu5o")
 max_value = 30.0
 value = 30.0
 rounded = true

@@ -1,0 +1,164 @@
+[gd_scene load_steps=17 format=3 uid="uid://d124nyu4li83c"]
+
+[ext_resource type="Script" path="res://dialoguebox.gd" id="1_hkv0r"]
+[ext_resource type="Script" path="res://control.gd" id="1_oxkxk"]
+[ext_resource type="Texture2D" uid="uid://c66t0ovwihlnu" path="res://smallfoxsmile.png" id="2_n3i3w"]
+[ext_resource type="Texture2D" uid="uid://lpbal0de1xmv" path="res://smallffox_spookysmile.png" id="2_xscoi"]
+[ext_resource type="Texture2D" uid="uid://bmygbtbf0igm3" path="res://textbox......png" id="3_vo8et"]
+[ext_resource type="Texture2D" uid="uid://02fhb6cau4tn" path="res://namebox.png" id="4_dyq02"]
+[ext_resource type="Texture2D" uid="uid://4ccq3kf383pw" path="res://smallfoxsmile...angelic.png" id="4_kd3tt"]
+[ext_resource type="FontFile" uid="uid://dbphvd7qs23o7" path="res://FiraSansCondensed-Regular.ttf" id="6_i4w44"]
+[ext_resource type="FontFile" uid="uid://cd2f1hh178cs4" path="res://FiraSansCondensed-Black.ttf" id="8_6qyod"]
+[ext_resource type="AudioStream" uid="uid://w8hpvv2tyjcw" path="res://Monster_Groan3.mp3" id="9_gyah3"]
+[ext_resource type="AudioStream" uid="uid://b60vn3ylua70w" path="res://Fae_Giggle2.wav" id="10_uvdi4"]
+[ext_resource type="AudioStream" uid="uid://cnru818w44yo8" path="res://Fae_Giggle3.wav" id="11_8top1"]
+[ext_resource type="AudioStream" uid="uid://t3djmj4nlvgy" path="res://625716__sonically_sound__shiny-object.wav" id="12_c1cvd"]
+
+[sub_resource type="Animation" id="Animation_dpg4x"]
+resource_name = "sh_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("dialoguebox/Control:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fj7x3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("dialoguebox/Control:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3n0c5"]
+_data = {
+"RESET": SubResource("Animation_fj7x3"),
+"sh_down": SubResource("Animation_dpg4x")
+}
+
+[node name="dialoguebox" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hkv0r")
+
+[node name="ideal1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(644, 285)
+scale = Vector2(0.5, 0.455)
+texture = ExtResource("2_n3i3w")
+
+[node name="ideal2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(644, 285)
+scale = Vector2(0.5, 0.455)
+texture = ExtResource("2_xscoi")
+
+[node name="ideal3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(644, 285)
+scale = Vector2(0.5, 0.455)
+texture = ExtResource("4_kd3tt")
+
+[node name="dialogue" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 6272.0
+offset_bottom = 3528.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("3_vo8et")
+
+[node name="phrase" type="RichTextLabel" parent="dialogue"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 518.0
+offset_top = 2735.0
+offset_right = -505.0
+offset_bottom = -419.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("6_i4w44")
+theme_override_font_sizes/normal_font_size = 150
+bbcode_enabled = true
+text = "sdasdasda"
+
+[node name="nameplate" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 6272.0
+offset_bottom = 3528.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("4_dyq02")
+
+[node name="nametag" type="RichTextLabel" parent="nameplate"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.059
+anchor_top = 0.535
+anchor_right = 0.249
+anchor_bottom = 0.597
+offset_left = 60.432
+offset_top = 9.31982
+offset_right = 1.55188
+offset_bottom = -36.0559
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("8_6qyod")
+theme_override_font_sizes/normal_font_size = 150
+bbcode_enabled = true
+text = "Идол площади"
+
+[node name="growl" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_gyah3")
+
+[node name="giggle" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_uvdi4")
+
+[node name="giggle2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_8top1")
+
+[node name="sparks" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_c1cvd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_3n0c5")
+}
+
+[node name="Control" type="Control" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oxkxk")

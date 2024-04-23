@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://we4a6521rb4y"]
+[gd_scene load_steps=13 format=3 uid="uid://we4a6521rb4y"]
 
 [ext_resource type="Script" path="res://scenes/levels/main_character.gd" id="1_tatw4"]
-[ext_resource type="Texture2D" uid="uid://dtdmpwx5kmjl7" path="res://art/mainCharacter/mainCharacter_Stand/mainCharacter_Stand_1.svg" id="1_yhu7w"]
-[ext_resource type="Texture2D" uid="uid://d3l6wtue0i0io" path="res://art/mainCharacter/mainCharacter_Stand/mainCharacter_Stand_2.svg" id="2_71c7u"]
-[ext_resource type="Texture2D" uid="uid://c2jj7e7c8tuop" path="res://art/mainCharacter/mainCharacter_Walk_Left/mainCharacter_Walk_Left_1.svg" id="4_4cb7m"]
+[ext_resource type="Texture2D" uid="uid://cdsq8w0dbbmnt" path="res://art/mainCharacter/mainCharacter_Stand/движение гг 1 .png" id="2_j8ove"]
+[ext_resource type="Texture2D" uid="uid://cmgwjefcjf173" path="res://art/mainCharacter/mainCharacter_Stand/движение гг  2.png" id="3_86bvo"]
+[ext_resource type="Texture2D" uid="uid://drpachlo0lyt7" path="res://art/mainCharacter/mainCharacter_Stand/движение гг  3.png" id="4_bxrca"]
 [ext_resource type="Texture2D" uid="uid://bpvwq37t2pi2x" path="res://art/mainCharacter/mainCharacter_Walk_Down/mainCharacter_Walk_Down_1.svg" id="4_wy46c"]
 [ext_resource type="Texture2D" uid="uid://v5bogd3evxnf" path="res://art/mainCharacter/mainCharacter_Walk_Down/mainCharacter_Walk_Down_2.svg" id="5_2owkf"]
-[ext_resource type="Texture2D" uid="uid://d25rhgc0g45pj" path="res://art/mainCharacter/mainCharacter_Walk_Left/mainCharacter_Walk_Left_2.svg" id="5_jcikq"]
+[ext_resource type="Texture2D" uid="uid://bqnpehygakelo" path="res://art/mainCharacter/mainCharacter_Walk_Left/ходьба гг 1.png" id="7_4kdk6"]
+[ext_resource type="Texture2D" uid="uid://bksrh60hgmfhd" path="res://art/mainCharacter/mainCharacter_Walk_Left/ходьба гг 2 .png" id="8_7y4cx"]
 [ext_resource type="Texture2D" uid="uid://cyr1rljgw5mjo" path="res://art/mainCharacter/mainCharacter_Walk_Up/mainCharacter_Walk_Up_1.svg" id="8_fvh8b"]
 [ext_resource type="Texture2D" uid="uid://dqcn8vxt6xkiy" path="res://art/mainCharacter/mainCharacter_Walk_Up/mainCharacter_Walk_Up_2.svg" id="9_u0v32"]
 
@@ -14,10 +15,13 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_yhu7w")
+"texture": ExtResource("2_j8ove")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_71c7u")
+"texture": ExtResource("3_86bvo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bxrca")
 }],
 "loop": true,
 "name": &"stand",
@@ -36,10 +40,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_4cb7m")
+"texture": ExtResource("7_4kdk6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_jcikq")
+"texture": ExtResource("8_7y4cx")
 }],
 "loop": true,
 "name": &"walk_left",
@@ -67,7 +71,7 @@ metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5ebtg")
-animation = &"walk_up"
+animation = &"walk_left"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_icjgp")
